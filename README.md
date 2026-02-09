@@ -67,4 +67,4 @@ World of Warcraft/_anniversary_/Interface/AddOns/TradeBarker/
 
 ## Author
 
-mgm21
+Tidalz - US Nightslayer
