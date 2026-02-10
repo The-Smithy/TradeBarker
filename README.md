@@ -123,6 +123,20 @@ Copy the `TradeBarker` folder into your WoW AddOns directory:
 World of Warcraft/_anniversary_/Interface/AddOns/TradeBarker/
 ```
 
+## Disclaimer
+
+TradeBarker is a tool designed to help crafters advertise their profession services. **You are solely responsible for the content of the messages you send using this addon.**
+
+- The addon and its developer are **not responsible** for any misuse of in-game chat channels
+- Users must comply with World of Warcraft's Terms of Service and Code of Conduct
+- Users are responsible for ensuring their messages are appropriate and non-offensive
+- Excessive or inappropriate use of trade chat may result in penalties from Blizzard Entertainment
+- Use of explicit language, harassment, spam, or other violations of game rules is strictly prohibited
+
+**By using TradeBarker, you acknowledge that you are responsible for your own conduct and any consequences that may result from your use of this addon.**
+
+Please be respectful, follow server rules, and use trade chat responsibly.
+
 ## Author
 
 Tidalz - US Nightslayer
