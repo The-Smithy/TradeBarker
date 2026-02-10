@@ -948,7 +948,7 @@ local function RebuildPresetList()
         end)
 
         -- Up button
-        local upBtn = CreateFlatButton(row, "↑", 20)
+        local upBtn = CreateFlatButton(row, "^", 20)
         upBtn:SetHeight(20)
         upBtn:SetPoint("LEFT", delBtn, "RIGHT", 2, 0)
         if i == 1 then
@@ -961,7 +961,7 @@ local function RebuildPresetList()
         end)
 
         -- Down button
-        local downBtn = CreateFlatButton(row, "↓", 20)
+        local downBtn = CreateFlatButton(row, "v", 20)
         downBtn:SetHeight(20)
         downBtn:SetPoint("LEFT", upBtn, "RIGHT", 2, 0)
         if i == #presets then
@@ -1232,6 +1232,44 @@ local function CreateMainFrame()
     previewLabel:SetPoint("TOPLEFT", 10, -130)
     previewLabel:SetText("|cff8899aaPreview|r")
 
+    local previewBtn = CreateFlatButton(f, "Preview", 72)
+    previewBtn:SetHeight(18)
+    previewBtn:SetPoint("LEFT", previewLabel, "RIGHT", 8, 0)
+    previewBtn:SetScript("OnClick", function()
+        local msg = BuildMessage()
+        if msg then
+            previewBox:SetText(msg)
+            UpdateCharCount()
+            local msgs = SplitMessage(msg, MAX_CHAT_LENGTH)
+            if #msgs > 1 then
+                print("|cffffd200[TradeBarker]|r Message will be split into " .. #msgs .. " parts.")
+            end
+        else
+            previewBox:SetText("(no items selected)")
+            UpdateCharCount()
+        end
+    end)
+
+    local sendBtn = CreateFlatButton(f, "Send to Trade", 90)
+    sendBtn:SetHeight(18)
+    sendBtn:SetPoint("LEFT", previewBtn, "RIGHT", 4, 0)
+    sendBtn:SetBackdropColor(0.1, 0.18, 0.1, 0.9)
+    sendBtn:SetBackdropBorderColor(0.3, 0.6, 0.3, 0.8)
+    sendBtn:GetFontString():SetTextColor(0.5, 1, 0.5)
+    sendBtn:SetScript("OnEnter", function(self)
+        self:SetBackdropColor(0.15, 0.28, 0.15, 0.9)
+        self:SetBackdropBorderColor(0.4, 0.8, 0.4, 0.8)
+        self:GetFontString():SetTextColor(0.7, 1, 0.7)
+    end)
+    sendBtn:SetScript("OnLeave", function(self)
+        self:SetBackdropColor(0.1, 0.18, 0.1, 0.9)
+        self:SetBackdropBorderColor(0.3, 0.6, 0.3, 0.8)
+        sendBtn:GetFontString():SetTextColor(0.5, 1, 0.5)
+    end)
+    sendBtn:SetScript("OnClick", function()
+        SendToTrade()
+    end)
+
     local previewPanel = CreatePanel(f, nil)
     previewPanel:SetPoint("TOPLEFT", 8, -144)
     previewPanel:SetPoint("RIGHT", -8, 0)
@@ -1355,42 +1393,6 @@ local function CreateMainFrame()
             entry.cb:SetChecked(false)
             TradeBarkerDB[entry.key] = false
         end
-    end)
-
-    local previewBtn = CreateFlatButton(f, "Preview", 72)
-    previewBtn:SetPoint("LEFT", deselectAllBtn, "RIGHT", 4, 0)
-    previewBtn:SetScript("OnClick", function()
-        local msg = BuildMessage()
-        if msg then
-            previewBox:SetText(msg)
-            UpdateCharCount()
-            local msgs = SplitMessage(msg, MAX_CHAT_LENGTH)
-            if #msgs > 1 then
-                print("|cffffd200[TradeBarker]|r Message will be split into " .. #msgs .. " parts.")
-            end
-        else
-            previewBox:SetText("(no items selected)")
-            UpdateCharCount()
-        end
-    end)
-
-    local sendBtn = CreateFlatButton(f, "Send", 72)
-    sendBtn:SetPoint("LEFT", previewBtn, "RIGHT", 4, 0)
-    sendBtn:SetBackdropColor(0.1, 0.18, 0.1, 0.9)
-    sendBtn:SetBackdropBorderColor(0.3, 0.6, 0.3, 0.8)
-    sendBtn:GetFontString():SetTextColor(0.5, 1, 0.5)
-    sendBtn:SetScript("OnEnter", function(self)
-        self:SetBackdropColor(0.15, 0.28, 0.15, 0.9)
-        self:SetBackdropBorderColor(0.4, 0.8, 0.4, 0.8)
-        self:GetFontString():SetTextColor(0.7, 1, 0.7)
-    end)
-    sendBtn:SetScript("OnLeave", function(self)
-        self:SetBackdropColor(0.1, 0.18, 0.1, 0.9)
-        self:SetBackdropBorderColor(0.3, 0.6, 0.3, 0.8)
-        self:GetFontString():SetTextColor(0.5, 1, 0.5)
-    end)
-    sendBtn:SetScript("OnClick", function()
-        SendToTrade()
     end)
 
     return f

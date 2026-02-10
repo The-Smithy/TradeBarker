@@ -5,4 +5,10 @@
 ## Version: 1.1.0
 ## SavedVariablesPerCharacter: TradeBarkerDB
 
-TradeBarker.lua
+# Core files (load order matters!)
+Core.lua
+ProfessionData.lua
+Presets.lua
+MessageBuilder.lua
+UI.lua
+TradeBarker-New.lua

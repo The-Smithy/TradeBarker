@@ -52,7 +52,7 @@ Each preset row has several buttons:
 - **Load** - Loads the preset's selections into the UI (replaces current selections)
 - **Send** - Instantly sends the preset to Trade chat without loading it (preserves current selections)
 - **Del** - Deletes the preset
-- **↑/↓** - Reorders presets in the list
+- **^ / v** - Reorders presets in the list (up/down)
 - **Name field** - Click to rename the preset (press Enter to save)
 
 ### Quick Send

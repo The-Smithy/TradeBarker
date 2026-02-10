@@ -157,7 +157,7 @@ Moves preset up or down in the list.
 Regenerates the preset UI:
 - Destroys existing preset rows
 - Creates new rows for each preset
-- Each row contains: name field, Load, Send, Del, ↑, ↓ buttons
+- Each row contains: name field, Load, Send, Del, ^ (up), v (down) buttons
 - Disables up/down buttons at list boundaries
 
 ### Message Building
@@ -221,16 +221,16 @@ Scans character skill lines using `GetNumSkillLines()` and `GetSkillLineInfo()`.
 │ │ LFW {profession}! | {items} | PST│ [e]│  ← Template editor + Reset
 │ └─────────────────────────────────┘ [s]│
 │                                     [e]│
-│ Preview:                            [t]│
+│ Preview: [Preview][Send to Trade]   [t]│  ← Preview & Send buttons
 │ ┌─────────────────────────────────────┐│
 │ │ (message preview appears here)      ││  ← Message preview
 │ └─────────────────────────────────────┘│
 ├─────────────────────────────────────────┤
 │ Presets: [Save Current]                 │  ← Presets header
 │ ┌─────────────────────────────────────┐│
-│ │Raid Enchants [Load][Send][Del][↑][↓]││  ← Preset rows
-│ │Budget Options[Load][Send][Del][↑][↓]││
-│ │Premium Gems  [Load][Send][Del][↑][↓]││
+│ │Raid Enchants [Load][Send][Del][^][v]││  ← Preset rows
+│ │Budget Options[Load][Send][Del][^][v]││
+│ │Premium Gems  [Load][Send][Del][^][v]││
 │ └─────────────────────────────────────┘│
 ├─────────────────────────────────────────┤
 │ ┌─────────────────────────────────────┐│
@@ -241,7 +241,7 @@ Scans character skill lines using `GetNumSkillLines()` and `GetSkillLineInfo()`.
 │ │ ☐ Cat's Swiftness                   ││
 │ └─────────────────────────────────────┘│
 ├─────────────────────────────────────────┤
-│[Select All][Deselect All][Preview][Send]│  ← Action buttons
+│      [Select All][Deselect All]         │  ← Action buttons
 └─────────────────────────────────────────┘
 ```
 
