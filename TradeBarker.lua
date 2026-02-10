@@ -5,109 +5,112 @@ TradeBarkerDB = TradeBarkerDB or {}
 
 -------------------------------------------------------------------------------
 -- Profession Data (TBC Classic)
+-- Each item can optionally have a spellID for creating clickable spell links
+-- To find spell IDs: hover over the spell in your spellbook with this macro:
+--   /run local n=GameTooltip:GetSpell() if n then local _,id=GetSpellLink(n):match("spell:(%d+)") print(n,id) end
 -------------------------------------------------------------------------------
 local PROFESSION_DATA = {
     Enchanting = {
         {
             slot = "Weapon",
             items = {
-                "Mongoose",
-                "Executioner",
-                "Soulfrost",
-                "Sunfire",
-                "Major Spellpower",
-                "Major Healing",
-                "Major Intellect",
-                "Major Agility",
-                "Major Striking",
-                "Potency",
-                "Battlemaster",
-                "Spellsurge",
-                "Deathfrost",
-                "Greater Agility",
+                { name = "Mongoose", spellID = 27984 },
+                { name = "Executioner", spellID = 42974 },
+                { name = "Soulfrost", spellID = 27982 },
+                { name = "Sunfire", spellID = 27981 },
+                { name = "Major Spellpower", spellID = 27975 },
+                { name = "Major Healing", spellID = 27972 },
+                { name = "Major Intellect", spellID = 27968 },
+                { name = "Major Agility", spellID = 27967 },
+                { name = "Major Striking", spellID = 27971 },
+                { name = "Potency", spellID = 27968 },
+                { name = "Battlemaster", spellID = 28004 },
+                { name = "Spellsurge", spellID = 28003 },
+                { name = "Deathfrost", spellID = 46578 },
+                { name = "Greater Agility", spellID = 23800 },
             },
         },
         {
             slot = "2H Weapon",
             items = {
-                "Major Agility",
-                "Savagery",
+                { name = "Major Agility", spellID = 27837 },
+                { name = "Savagery", spellID = 27977 },
             },
         },
         {
             slot = "Chest",
             items = {
-                "Exceptional Stats",
-                "Major Resilience",
-                "Defense",
-                "Major Spirit",
-                "Exceptional Health",
-                "Exceptional Mana",
+                { name = "Exceptional Stats", spellID = 27957 },
+                { name = "Major Resilience", spellID = 33992 },
+                { name = "Defense", spellID = 27960 },
+                { name = "Major Spirit", spellID = 33990 },
+                { name = "Exceptional Health", spellID = 27957 },
+                { name = "Exceptional Mana", spellID = 27958 },
             },
         },
         {
             slot = "Cloak",
             items = {
-                "Greater Agility",
-                "Subtlety",
-                "Spell Penetration",
-                "Greater Arcane Resistance",
-                "Greater Shadow Resistance",
-                "Steelweave",
-                "Major Armor",
-                "Major Resistance",
+                { name = "Greater Agility", spellID = 25084 },
+                { name = "Subtlety", spellID = 25083 },
+                { name = "Spell Penetration", spellID = 34003 },
+                { name = "Greater Arcane Resistance", spellID = 27961 },
+                { name = "Greater Shadow Resistance", spellID = 27962 },
+                { name = "Steelweave", spellID = 27950 },
+                { name = "Major Armor", spellID = 27951 },
+                { name = "Major Resistance", spellID = 36285 },
             },
         },
         {
             slot = "Boots",
             items = {
-                "Boar's Speed",
-                "Cat's Swiftness",
-                "Dexterity",
-                "Fortitude",
-                "Surefooted",
-                "Vitality",
+                { name = "Boar's Speed", spellID = 34008 },
+                { name = "Cat's Swiftness", spellID = 34007 },
+                { name = "Dexterity", spellID = 27948 },
+                { name = "Fortitude", spellID = 27949 },
+                { name = "Surefooted", spellID = 27954 },
+                { name = "Vitality", spellID = 35343 },
             },
         },
         {
             slot = "Gloves",
             items = {
-                "Major Healing",
-                "Spell Strike",
-                "Major Strength",
-                "Assault",
-                "Blasting",
-                "Major Spellpower",
+                { name = "Major Healing", spellID = 33999 },
+                { name = "Spell Strike", spellID = 33997 },
+                { name = "Major Strength", spellID = 33995 },
+                { name = "Assault", spellID = 33996 },
+                { name = "Blasting", spellID = 33993 },
+                { name = "Major Spellpower", spellID = 33994 },
             },
         },
         {
             slot = "Bracer",
             items = {
-                "Spellpower",
-                "Fortitude",
-                "Major Defense",
-                "Restore Mana Prime",
-                "Stats",
-                "Superior Healing",
-                "Assault",
+                { name = "Spellpower", spellID = 27917 },
+                { name = "Fortitude", spellID = 27914 },
+                { name = "Major Defense", spellID = 27913 },
+                { name = "Restore Mana Prime", spellID = 27913 },
+                { name = "Stats", spellID = 27905 },
+                { name = "Superior Healing", spellID = 27911 },
+                { name = "Assault", spellID = 33990 },
             },
         },
         {
             slot = "Shield",
             items = {
-                "Intellect",
-                "Shield Block",
-                "Major Stamina",
-                "Resistance",
+                { name = "Intellect", spellID = 27944 },
+                { name = "Shield Block", spellID = 27945 },
+                { name = "Major Stamina", spellID = 27947 },
+                { name = "Resistance", spellID = 27946 },
             },
         },
         {
             slot = "Ring",
             items = {
-                "Healing Power",
-                "Spell Power",
-                "Stats",
-                "Striking",
+                { name = "Healing Power", spellID = 27927 },
+                { name = "Spell Power", spellID = 27924 },
+                { name = "Stats", spellID = 27926 },
+                { name = "Striking", spellID = 27920 },
             },
         },
     },
@@ -115,56 +118,56 @@ local PROFESSION_DATA = {
         {
             slot = "Flasks",
             items = {
-                "Flask of Fortification",
-                "Flask of Blinding Light",
-                "Flask of Mighty Versatility",
-                "Flask of Pure Death",
-                "Flask of Relentless Assault",
-                "Flask of Supreme Power",
-                "Flask of Distilled Wisdom",
-                "Flask of the Titans",
-                "Flask of Chromatic Resistance",
+                { name = "Flask of Fortification", spellID = 28518 },
+                { name = "Flask of Blinding Light", spellID = 28519 },
+                { name = "Flask of Mighty Versatility", spellID = 28520 },
+                { name = "Flask of Pure Death", spellID = 28540 },
+                { name = "Flask of Relentless Assault", spellID = 28521 },
+                { name = "Flask of Supreme Power", spellID = 17559 },
+                { name = "Flask of Distilled Wisdom", spellID = 17555 },
+                { name = "Flask of the Titans", spellID = 17552 },
+                { name = "Flask of Chromatic Resistance", spellID = 17565 },
             },
         },
         {
             slot = "Elixirs",
             items = {
-                "Elixir of Major Agility",
-                "Elixir of Draenic Wisdom",
-                "Elixir of Major Mageblood",
-                "Elixir of Healing Power",
-                "Elixir of Major Defense",
-                "Elixir of Major Firepower",
-                "Elixir of Major Shadow Power",
-                "Elixir of Major Frost Power",
-                "Elixir of Mastery",
-                "Elixir of Ironskin",
+                { name = "Elixir of Major Agility", spellID = 28543 },
+                { name = "Elixir of Draenic Wisdom", spellID = 39638 },
+                { name = "Elixir of Major Mageblood", spellID = 28549 },
+                { name = "Elixir of Healing Power", spellID = 28556 },
+                { name = "Elixir of Major Defense", spellID = 28544 },
+                { name = "Elixir of Major Firepower", spellID = 28545 },
+                { name = "Elixir of Major Shadow Power", spellID = 28553 },
+                { name = "Elixir of Major Frost Power", spellID = 28546 },
+                { name = "Elixir of Mastery", spellID = 33741 },
+                { name = "Elixir of Ironskin", spellID = 39636 },
             },
         },
         {
             slot = "Potions",
             items = {
-                "Super Mana Potion",
-                "Super Healing Potion",
-                "Ironshield Potion",
-                "Haste Potion",
-                "Destruction Potion",
-                "Free Action Potion",
+                { name = "Super Mana Potion", spellID = 28568 },
+                { name = "Super Healing Potion", spellID = 28569 },
+                { name = "Ironshield Potion", spellID = 28564 },
+                { name = "Haste Potion", spellID = 28562 },
+                { name = "Destruction Potion", spellID = 28560 },
+                { name = "Free Action Potion", spellID = 6624 },
             },
         },
         {
             slot = "Transmutes",
             items = {
-                "Primal Might",
-                "Earthstorm Diamond",
-                "Skyfire Diamond",
-                "Primal Fire to Earth",
-                "Primal Earth to Water",
-                "Primal Water to Air",
-                "Primal Air to Fire",
-                "Primal Life to Earth",
-                "Primal Shadow to Water",
-                "Primal Mana to Fire",
+                { name = "Primal Might", spellID = 29688 },
+                { name = "Earthstorm Diamond", spellID = 32765 },
+                { name = "Skyfire Diamond", spellID = 32766 },
+                { name = "Primal Fire to Earth", spellID = 28585 },
+                { name = "Primal Earth to Water", spellID = 28583 },
+                { name = "Primal Water to Air", spellID = 28584 },
+                { name = "Primal Air to Fire", spellID = 28582 },
+                { name = "Primal Life to Earth", spellID = 28580 },
+                { name = "Primal Shadow to Water", spellID = 28581 },
+                { name = "Primal Mana to Fire", spellID = 28579 },
             },
         },
     },
@@ -172,75 +175,75 @@ local PROFESSION_DATA = {
         {
             slot = "Meta Gems",
             items = {
-                "Insightful Earthstorm Diamond",
-                "Bracing Earthstorm Diamond",
-                "Powerful Earthstorm Diamond",
-                "Relentless Earthstorm Diamond",
-                "Chaotic Skyfire Diamond",
-                "Destructive Skyfire Diamond",
-                "Swift Skyfire Diamond",
-                "Mystical Skyfire Diamond",
-                "Thundering Skyfire Diamond",
+                { name = "Insightful Earthstorm Diamond", spellID = 32870 },
+                { name = "Bracing Earthstorm Diamond", spellID = 32867 },
+                { name = "Powerful Earthstorm Diamond", spellID = 32869 },
+                { name = "Relentless Earthstorm Diamond", spellID = 32871 },
+                { name = "Chaotic Skyfire Diamond", spellID = 32866 },
+                { name = "Destructive Skyfire Diamond", spellID = 32868 },
+                { name = "Swift Skyfire Diamond", spellID = 32872 },
+                { name = "Mystical Skyfire Diamond", spellID = 32873 },
+                { name = "Thundering Skyfire Diamond", spellID = 32874 },
             },
         },
         {
             slot = "Red Gems",
             items = {
-                "Delicate Living Ruby",
-                "Bold Living Ruby",
-                "Runed Living Ruby",
-                "Teardrop Living Ruby",
-                "Bright Living Ruby",
-                "Subtle Living Ruby",
+                { name = "Delicate Living Ruby", spellID = 28903 },
+                { name = "Bold Living Ruby", spellID = 28910 },
+                { name = "Runed Living Ruby", spellID = 28912 },
+                { name = "Teardrop Living Ruby", spellID = 28914 },
+                { name = "Bright Living Ruby", spellID = 28915 },
+                { name = "Subtle Living Ruby", spellID = 28936 },
             },
         },
         {
             slot = "Blue Gems",
             items = {
-                "Solid Star of Elune",
-                "Sparkling Star of Elune",
-                "Lustrous Star of Elune",
-                "Stormy Star of Elune",
+                { name = "Solid Star of Elune", spellID = 28944 },
+                { name = "Sparkling Star of Elune", spellID = 28945 },
+                { name = "Lustrous Star of Elune", spellID = 28948 },
+                { name = "Stormy Star of Elune", spellID = 28950 },
             },
         },
         {
             slot = "Yellow Gems",
             items = {
-                "Smooth Dawnstone",
-                "Rigid Dawnstone",
-                "Thick Dawnstone",
-                "Gleaming Dawnstone",
-                "Brilliant Dawnstone",
-                "Mystic Dawnstone",
+                { name = "Smooth Dawnstone", spellID = 28916 },
+                { name = "Rigid Dawnstone", spellID = 28924 },
+                { name = "Thick Dawnstone", spellID = 28927 },
+                { name = "Gleaming Dawnstone", spellID = 28933 },
+                { name = "Brilliant Dawnstone", spellID = 28936 },
+                { name = "Mystic Dawnstone", spellID = 28948 },
             },
         },
         {
             slot = "Orange Gems",
             items = {
-                "Inscribed Noble Topaz",
-                "Potent Noble Topaz",
-                "Luminous Noble Topaz",
-                "Glinting Noble Topaz",
-                "Wicked Noble Topaz",
+                { name = "Inscribed Noble Topaz", spellID = 28918 },
+                { name = "Potent Noble Topaz", spellID = 28925 },
+                { name = "Luminous Noble Topaz", spellID = 28948 },
+                { name = "Glinting Noble Topaz", spellID = 28950 },
+                { name = "Wicked Noble Topaz", spellID = 28953 },
             },
         },
         {
             slot = "Green Gems",
             items = {
-                "Enduring Talasite",
-                "Dazzling Talasite",
-                "Jagged Talasite",
-                "Radiant Talasite",
+                { name = "Enduring Talasite", spellID = 28950 },
+                { name = "Dazzling Talasite", spellID = 28951 },
+                { name = "Jagged Talasite", spellID = 28953 },
+                { name = "Radiant Talasite", spellID = 28955 },
             },
         },
         {
             slot = "Purple Gems",
             items = {
-                "Glowing Nightseye",
-                "Royal Nightseye",
-                "Shifting Nightseye",
-                "Sovereign Nightseye",
-                "Purified Nightseye",
+                { name = "Glowing Nightseye", spellID = 28955 },
+                { name = "Royal Nightseye", spellID = 28957 },
+                { name = "Shifting Nightseye", spellID = 28909 },
+                { name = "Sovereign Nightseye", spellID = 28925 },
+                { name = "Purified Nightseye", spellID = 28948 },
             },
         },
     },
@@ -248,53 +251,53 @@ local PROFESSION_DATA = {
         {
             slot = "Weapons",
             items = {
-                "Blazefury",
-                "Lionheart Executioner",
-                "Lionheart Champion",
-                "Dragonstrike",
-                "Dragonmaw",
-                "Stormherald",
-                "Deep Thunder",
-                "Blazeguard",
-                "Felsteel Longblade",
-                "Runic Hammer",
-                "Fel Edged Battleaxe",
-                "Felsteel Whisper Knives",
+                { name = "Blazefury", spellID = 36125 },
+                { name = "Lionheart Executioner", spellID = 36137 },
+                { name = "Lionheart Champion", spellID = 34544 },
+                { name = "Dragonstrike", spellID = 36136 },
+                { name = "Dragonmaw", spellID = 36135 },
+                { name = "Stormherald", spellID = 36134 },
+                { name = "Deep Thunder", spellID = 34548 },
+                { name = "Blazeguard", spellID = 36133 },
+                { name = "Felsteel Longblade", spellID = 29569 },
+                { name = "Runic Hammer", spellID = 36131 },
+                { name = "Fel Edged Battleaxe", spellID = 29568 },
+                { name = "Felsteel Whisper Knives", spellID = 36130 },
             },
         },
         {
             slot = "Plate Armor",
             items = {
-                "Bulwark of Kings",
-                "Bulwark of the Ancient Kings",
-                "Breastplate of Kings",
-                "Enchanted Adamantite Breastplate",
-                "Enchanted Adamantite Belt",
-                "Enchanted Adamantite Leggings",
-                "Enchanted Adamantite Boots",
-                "Khorium Belt",
-                "Ragesteel Breastplate",
-                "Ragesteel Gloves",
-                "Ragesteel Helm",
+                { name = "Bulwark of Kings", spellID = 36257 },
+                { name = "Bulwark of the Ancient Kings", spellID = 36256 },
+                { name = "Breastplate of Kings", spellID = 36256 },
+                { name = "Enchanted Adamantite Breastplate", spellID = 31941 },
+                { name = "Enchanted Adamantite Belt", spellID = 31943 },
+                { name = "Enchanted Adamantite Leggings", spellID = 31942 },
+                { name = "Enchanted Adamantite Boots", spellID = 31940 },
+                { name = "Khorium Belt", spellID = 29606 },
+                { name = "Ragesteel Breastplate", spellID = 29619 },
+                { name = "Ragesteel Gloves", spellID = 29620 },
+                { name = "Ragesteel Helm", spellID = 29621 },
             },
         },
         {
             slot = "Mail Armor",
             items = {
-                "Swiftsteel Bracers",
-                "Earthpeace Breastplate",
-                "Swiftsteel Shoulders",
-                "Fel Iron Chain Coif",
-                "Fel Iron Chain Tunic",
-                "Fel Iron Chain Bracers",
+                { name = "Swiftsteel Bracers", spellID = 29611 },
+                { name = "Earthpeace Breastplate", spellID = 29613 },
+                { name = "Swiftsteel Shoulders", spellID = 29615 },
+                { name = "Fel Iron Chain Coif", spellID = 29556 },
+                { name = "Fel Iron Chain Tunic", spellID = 29557 },
+                { name = "Fel Iron Chain Bracers", spellID = 29603 },
             },
         },
         {
             slot = "Sharpening/Weightstones",
             items = {
-                "Adamantite Sharpening Stone",
-                "Adamantite Weightstone",
-                "Felsteel Shield Spike",
+                { name = "Adamantite Sharpening Stone", spellID = 29654 },
+                { name = "Adamantite Weightstone", spellID = 29656 },
+                { name = "Felsteel Shield Spike", spellID = 29657 },
             },
         },
     },
@@ -302,55 +305,55 @@ local PROFESSION_DATA = {
         {
             slot = "Drums",
             items = {
-                "Drums of Battle",
-                "Drums of War",
-                "Drums of Restoration",
-                "Drums of Speed",
-                "Drums of Panic",
+                { name = "Drums of Battle", spellID = 35538 },
+                { name = "Drums of War", spellID = 29649 },
+                { name = "Drums of Restoration", spellID = 35539 },
+                { name = "Drums of Speed", spellID = 35540 },
+                { name = "Drums of Panic", spellID = 29648 },
             },
         },
         {
             slot = "Leg Armor",
             items = {
-                "Nethercobra Leg Armor",
-                "Nethercleft Leg Armor",
-                "Cobrahide Leg Armor",
-                "Clefthide Leg Armor",
+                { name = "Nethercobra Leg Armor", spellID = 35549 },
+                { name = "Nethercleft Leg Armor", spellID = 35554 },
+                { name = "Cobrahide Leg Armor", spellID = 35557 },
+                { name = "Clefthide Leg Armor", spellID = 35558 },
             },
         },
         {
             slot = "Armor Kits",
             items = {
-                "Vindicator's Armor Kit",
-                "Magister's Armor Kit",
-                "Knothide Armor Kit",
+                { name = "Vindicator's Armor Kit", spellID = 32457 },
+                { name = "Magister's Armor Kit", spellID = 32458 },
+                { name = "Knothide Armor Kit", spellID = 32456 },
             },
         },
         {
             slot = "Leather Armor",
             items = {
-                "Primalstrike Vest",
-                "Primalstrike Bracers",
-                "Primalstrike Belt",
-                "Windhawk Hauberk",
-                "Windhawk Bracers",
-                "Windhawk Belt",
-                "Living Crystal Breastplate",
-                "Golden Dragonstrike Breastplate",
+                { name = "Primalstrike Vest", spellID = 36074 },
+                { name = "Primalstrike Bracers", spellID = 36075 },
+                { name = "Primalstrike Belt", spellID = 36076 },
+                { name = "Windhawk Hauberk", spellID = 36077 },
+                { name = "Windhawk Bracers", spellID = 36078 },
+                { name = "Windhawk Belt", spellID = 36079 },
+                { name = "Living Crystal Breastplate", spellID = 32482 },
+                { name = "Golden Dragonstrike Breastplate", spellID = 35582 },
             },
         },
         {
             slot = "Mail Armor",
             items = {
-                "Ebon Netherscale Breastplate",
-                "Ebon Netherscale Belt",
-                "Ebon Netherscale Bracers",
-                "Netherstrike Breastplate",
-                "Netherstrike Belt",
-                "Netherstrike Bracers",
-                "Blastguard Pants",
-                "Blastguard Boots",
-                "Blastguard Belt",
+                { name = "Ebon Netherscale Breastplate", spellID = 36349 },
+                { name = "Ebon Netherscale Belt", spellID = 36351 },
+                { name = "Ebon Netherscale Bracers", spellID = 36352 },
+                { name = "Netherstrike Breastplate", spellID = 36353 },
+                { name = "Netherstrike Belt", spellID = 36355 },
+                { name = "Netherstrike Bracers", spellID = 36357 },
+                { name = "Blastguard Pants", spellID = 32485 },
+                { name = "Blastguard Boots", spellID = 32488 },
+                { name = "Blastguard Belt", spellID = 32489 },
             },
         },
     },
@@ -375,7 +378,187 @@ local detectedProfessions = {}
 local selectedProfession = nil
 
 local function GetItemKey(slot, item)
-    return slot .. ":" .. item
+    local itemName = type(item) == "table" and item.name or item
+    return slot .. ":" .. itemName
+end
+
+local function GetItemName(item)
+    return type(item) == "table" and item.name or item
+end
+
+local function GetItemSpellID(item)
+    return type(item) == "table" and item.spellID or nil
+end
+
+local function CreateSpellLink(spellID, name)
+    if not spellID then return name end
+    -- Create a spell link in WoW format: |cff71d5ff|Hspell:ID|h[Name]|h|r
+    return string.format("|cff71d5ff|Hspell:%d|h[%s]|h|r", spellID, name)
+end
+
+local function UseSpellLinks()
+    return TradeBarkerDB._useSpellLinks or false
+end
+
+local function SetUseSpellLinks(enabled)
+    TradeBarkerDB._useSpellLinks = enabled and true or false
+end
+
+-------------------------------------------------------------------------------
+-- Preset Management
+-------------------------------------------------------------------------------
+local presetListFrame
+
+local function GetPresets()
+    if not selectedProfession then return {} end
+    TradeBarkerDB._presets = TradeBarkerDB._presets or {}
+    TradeBarkerDB._presets[selectedProfession] = TradeBarkerDB._presets[selectedProfession] or {}
+    return TradeBarkerDB._presets[selectedProfession]
+end
+
+local function GetCurrentSelections()
+    local selections = {}
+    local data = GetProfessionData()
+    if not data then return selections end
+
+    for _, group in ipairs(data) do
+        for _, item in ipairs(group.items) do
+            local key = GetItemKey(group.slot, item)
+            if TradeBarkerDB[key] then
+                selections[key] = true
+            end
+        end
+    end
+    return selections
+end
+
+local function SavePreset(name)
+    if not selectedProfession then return end
+    if not name or name == "" then
+        print("|cffff6600[TradeBarker]|r Preset name cannot be empty!")
+        return
+    end
+
+    local selections = GetCurrentSelections()
+    if not next(selections) then
+        print("|cffff6600[TradeBarker]|r No items selected to save!")
+        return
+    end
+
+    local presets = GetPresets()
+    table.insert(presets, {
+        name = name,
+        items = selections
+    })
+
+    print("|cff00ff00[TradeBarker]|r Preset '" .. name .. "' saved!")
+    return true
+end
+
+local function LoadPreset(presetIndex)
+    local presets = GetPresets()
+    local preset = presets[presetIndex]
+    if not preset then return end
+
+    -- Clear all current selections
+    local data = GetProfessionData()
+    if data then
+        for _, group in ipairs(data) do
+            for _, item in ipairs(group.items) do
+                local key = GetItemKey(group.slot, item)
+                TradeBarkerDB[key] = false
+            end
+        end
+    end
+
+    -- Load preset selections
+    for key, value in pairs(preset.items) do
+        TradeBarkerDB[key] = value
+    end
+
+    -- Update UI
+    for _, entry in ipairs(checkboxes) do
+        entry.cb:SetChecked(TradeBarkerDB[entry.key] or false)
+    end
+
+    if previewBox then
+        previewBox:SetText("")
+    end
+    UpdateCharCount()
+
+    print("|cff00ff00[TradeBarker]|r Loaded preset: " .. preset.name)
+end
+
+local function QuickSendPreset(presetIndex)
+    local presets = GetPresets()
+    local preset = presets[presetIndex]
+    if not preset then return end
+
+    -- Temporarily load preset
+    local originalSelections = GetCurrentSelections()
+
+    -- Clear and load preset
+    local data = GetProfessionData()
+    if data then
+        for _, group in ipairs(data) do
+            for _, item in ipairs(group.items) do
+                local key = GetItemKey(group.slot, item)
+                TradeBarkerDB[key] = false
+            end
+        end
+    end
+
+    for key, value in pairs(preset.items) do
+        TradeBarkerDB[key] = value
+    end
+
+    -- Send message
+    SendToTrade()
+
+    -- Restore original selections
+    for _, group in ipairs(data) do
+        for _, item in ipairs(group.items) do
+            local key = GetItemKey(group.slot, item)
+            TradeBarkerDB[key] = false
+        end
+    end
+
+    for key, value in pairs(originalSelections) do
+        TradeBarkerDB[key] = value
+    end
+
+    -- Update UI
+    for _, entry in ipairs(checkboxes) do
+        entry.cb:SetChecked(TradeBarkerDB[entry.key] or false)
+    end
+end
+
+local function DeletePreset(presetIndex)
+    local presets = GetPresets()
+    local preset = presets[presetIndex]
+    if not preset then return end
+
+    print("|cffff6600[TradeBarker]|r Deleted preset: " .. preset.name)
+    table.remove(presets, presetIndex)
+end
+
+local function RenamePreset(presetIndex, newName)
+    if not newName or newName == "" then return end
+    local presets = GetPresets()
+    local preset = presets[presetIndex]
+    if not preset then return end
+
+    preset.name = newName
+    print("|cff00ff00[TradeBarker]|r Preset renamed to: " .. newName)
+end
+
+local function MovePreset(presetIndex, direction)
+    local presets = GetPresets()
+    if direction == "up" and presetIndex > 1 then
+        presets[presetIndex], presets[presetIndex - 1] = presets[presetIndex - 1], presets[presetIndex]
+    elseif direction == "down" and presetIndex < #presets then
+        presets[presetIndex], presets[presetIndex + 1] = presets[presetIndex + 1], presets[presetIndex]
+    end
 end
 
 local function GetProfessionData()
@@ -421,13 +604,25 @@ local function BuildItemsString()
     local data = GetProfessionData()
     if not data then return nil end
 
+    local useLinks = UseSpellLinks()
     local parts = {}
+
     for _, group in ipairs(data) do
         local selected = {}
         for _, item in ipairs(group.items) do
             local key = GetItemKey(group.slot, item)
             if TradeBarkerDB[key] then
-                table.insert(selected, item)
+                local itemName = GetItemName(item)
+                if useLinks then
+                    local spellID = GetItemSpellID(item)
+                    if spellID then
+                        table.insert(selected, CreateSpellLink(spellID, itemName))
+                    else
+                        table.insert(selected, itemName)
+                    end
+                else
+                    table.insert(selected, itemName)
+                end
             end
         end
         if #selected > 0 then
@@ -630,6 +825,8 @@ local function RebuildCheckboxes()
 
         for _, item in ipairs(group.items) do
             local key = GetItemKey(group.slot, item)
+            local itemName = GetItemName(item)
+
             local cb = CreateFrame("CheckButton", nil, scrollChild, "UICheckButtonTemplate")
             cb:SetPoint("TOPLEFT", 6, -yOffset)
             cb:SetSize(22, 22)
@@ -640,7 +837,7 @@ local function RebuildCheckboxes()
 
             local label = cb:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
             label:SetPoint("LEFT", cb, "RIGHT", 4, 0)
-            label:SetText(item)
+            label:SetText(itemName)
 
             table.insert(checkboxes, { cb = cb, key = key, label = label })
             yOffset = yOffset + 20
@@ -650,6 +847,137 @@ local function RebuildCheckboxes()
     end
 
     scrollChild:SetHeight(yOffset)
+end
+
+-------------------------------------------------------------------------------
+-- UI: Rebuild Preset List
+-------------------------------------------------------------------------------
+local function RebuildPresetList()
+    if not presetListFrame then return end
+
+    -- Clear existing preset rows
+    if presetListFrame._rows then
+        for _, row in ipairs(presetListFrame._rows) do
+            row:Hide()
+            row:SetParent(nil)
+        end
+    end
+    presetListFrame._rows = {}
+
+    local presets = GetPresets()
+    local yOffset = 4
+
+    for i, preset in ipairs(presets) do
+        local row = CreateFrame("Frame", nil, presetListFrame, "BackdropTemplate")
+        row:SetPoint("TOPLEFT", 4, -yOffset)
+        row:SetPoint("RIGHT", -4, 0)
+        row:SetHeight(24)
+        row:SetBackdrop({
+            bgFile = "Interface\\Buttons\\WHITE8x8",
+            edgeFile = "Interface\\Buttons\\WHITE8x8",
+            edgeSize = 1,
+            insets = { left = 1, right = 1, top = 1, bottom = 1 },
+        })
+        row:SetBackdropColor(0.1, 0.1, 0.12, 0.7)
+        row:SetBackdropBorderColor(0.3, 0.3, 0.3, 0.5)
+
+        -- Preset name (editable)
+        local nameBox = CreateFrame("EditBox", nil, row)
+        nameBox:SetPoint("LEFT", 4, 0)
+        nameBox:SetWidth(120)
+        nameBox:SetHeight(20)
+        nameBox:SetFontObject(GameFontHighlightSmall)
+        nameBox:SetAutoFocus(false)
+        nameBox:SetText(preset.name)
+        nameBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
+        nameBox:SetScript("OnEnterPressed", function(self)
+            RenamePreset(i, self:GetText())
+            self:ClearFocus()
+            RebuildPresetList()
+        end)
+
+        -- Load button
+        local loadBtn = CreateFlatButton(row, "Load", 45)
+        loadBtn:SetHeight(20)
+        loadBtn:SetPoint("LEFT", nameBox, "RIGHT", 2, 0)
+        loadBtn:SetScript("OnClick", function()
+            LoadPreset(i)
+        end)
+
+        -- Send button (quick send)
+        local sendBtn = CreateFlatButton(row, "Send", 45)
+        sendBtn:SetHeight(20)
+        sendBtn:SetPoint("LEFT", loadBtn, "RIGHT", 2, 0)
+        sendBtn:SetBackdropColor(0.1, 0.18, 0.1, 0.9)
+        sendBtn:SetBackdropBorderColor(0.3, 0.6, 0.3, 0.8)
+        sendBtn:GetFontString():SetTextColor(0.5, 1, 0.5)
+        sendBtn:SetScript("OnEnter", function(self)
+            self:SetBackdropColor(0.15, 0.28, 0.15, 0.9)
+            self:SetBackdropBorderColor(0.4, 0.8, 0.4, 0.8)
+            self:GetFontString():SetTextColor(0.7, 1, 0.7)
+        end)
+        sendBtn:SetScript("OnLeave", function(self)
+            self:SetBackdropColor(0.1, 0.18, 0.1, 0.9)
+            self:SetBackdropBorderColor(0.3, 0.6, 0.3, 0.8)
+            self:GetFontString():SetTextColor(0.5, 1, 0.5)
+        end)
+        sendBtn:SetScript("OnClick", function()
+            QuickSendPreset(i)
+        end)
+
+        -- Delete button
+        local delBtn = CreateFlatButton(row, "Del", 30)
+        delBtn:SetHeight(20)
+        delBtn:SetPoint("LEFT", sendBtn, "RIGHT", 2, 0)
+        delBtn:SetBackdropColor(0.18, 0.1, 0.1, 0.9)
+        delBtn:SetBackdropBorderColor(0.6, 0.3, 0.3, 0.8)
+        delBtn:GetFontString():SetTextColor(1, 0.5, 0.5)
+        delBtn:SetScript("OnEnter", function(self)
+            self:SetBackdropColor(0.28, 0.15, 0.15, 0.9)
+            self:SetBackdropBorderColor(0.8, 0.4, 0.4, 0.8)
+            self:GetFontString():SetTextColor(1, 0.7, 0.7)
+        end)
+        delBtn:SetScript("OnLeave", function(self)
+            self:SetBackdropColor(0.18, 0.1, 0.1, 0.9)
+            self:SetBackdropBorderColor(0.6, 0.3, 0.3, 0.8)
+            self:GetFontString():SetTextColor(1, 0.5, 0.5)
+        end)
+        delBtn:SetScript("OnClick", function()
+            DeletePreset(i)
+            RebuildPresetList()
+        end)
+
+        -- Up button
+        local upBtn = CreateFlatButton(row, "↑", 20)
+        upBtn:SetHeight(20)
+        upBtn:SetPoint("LEFT", delBtn, "RIGHT", 2, 0)
+        if i == 1 then
+            upBtn:SetAlpha(0.3)
+            upBtn:Disable()
+        end
+        upBtn:SetScript("OnClick", function()
+            MovePreset(i, "up")
+            RebuildPresetList()
+        end)
+
+        -- Down button
+        local downBtn = CreateFlatButton(row, "↓", 20)
+        downBtn:SetHeight(20)
+        downBtn:SetPoint("LEFT", upBtn, "RIGHT", 2, 0)
+        if i == #presets then
+            downBtn:SetAlpha(0.3)
+            downBtn:Disable()
+        end
+        downBtn:SetScript("OnClick", function()
+            MovePreset(i, "down")
+            RebuildPresetList()
+        end)
+
+        table.insert(presetListFrame._rows, row)
+        yOffset = yOffset + 26
+    end
+
+    presetListFrame:SetHeight(math.max(60, yOffset))
 end
 
 -------------------------------------------------------------------------------
@@ -690,6 +1018,7 @@ local function RebuildTabs()
             scrollFrame:Hide()
         end
         RebuildCheckboxes()
+        RebuildPresetList()
         return
     end
 
@@ -740,6 +1069,7 @@ local function RebuildTabs()
             TradeBarkerDB._profession = profName
             UpdateTabHighlights()
             RebuildCheckboxes()
+            RebuildPresetList()
             if templateBox then
                 templateBox:SetText(GetTemplate())
             end
@@ -766,6 +1096,7 @@ local function RebuildTabs()
 
     UpdateTabHighlights()
     RebuildCheckboxes()
+    RebuildPresetList()
     if templateBox then
         templateBox:SetText(GetTemplate())
     end
@@ -776,7 +1107,7 @@ end
 -------------------------------------------------------------------------------
 local function CreateMainFrame()
     local f = CreateFrame("Frame", "TradeBarkerFrame", UIParent, "BackdropTemplate")
-    f:SetSize(360, 600)
+    f:SetSize(360, 740)
     f:SetPoint("CENTER")
     f:SetMovable(true)
     f:EnableMouse(true)
@@ -831,6 +1162,33 @@ local function CreateMainFrame()
     local templateHeader = f:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     templateHeader:SetPoint("TOPLEFT", 10, -62)
     templateHeader:SetText("|cff8899aaTemplate|r")
+
+    -- Spell Links checkbox
+    local spellLinksCB = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate")
+    spellLinksCB:SetPoint("TOPLEFT", 80, -60)
+    spellLinksCB:SetSize(20, 20)
+    spellLinksCB:SetChecked(UseSpellLinks())
+    spellLinksCB:SetScript("OnClick", function(self)
+        SetUseSpellLinks(self:GetChecked())
+        -- Clear preview when toggling so user re-previews with new format
+        if previewBox then
+            previewBox:SetText("")
+        end
+        UpdateCharCount()
+    end)
+
+    local spellLinksLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    spellLinksLabel:SetPoint("LEFT", spellLinksCB, "RIGHT", 2, 0)
+    spellLinksLabel:SetText("|cff8899aaUse Spell Links|r")
+    spellLinksLabel:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText("Use Spell Links", 1, 1, 1)
+        GameTooltip:AddLine("When enabled, items will be linked as clickable spells in trade chat (requires spell IDs to be configured).", nil, nil, nil, true)
+        GameTooltip:Show()
+    end)
+    spellLinksLabel:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
 
     charCountText = f:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     charCountText:SetPoint("TOPRIGHT", -10, -62)
@@ -888,9 +1246,88 @@ local function CreateMainFrame()
     previewBox:EnableMouse(true)
     previewBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
 
+    -- Presets section
+    local presetsHeader = f:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    presetsHeader:SetPoint("TOPLEFT", 10, -198)
+    presetsHeader:SetText("|cff8899aaPresets|r")
+
+    local savePresetBtn = CreateFlatButton(f, "Save Current", 80)
+    savePresetBtn:SetHeight(18)
+    savePresetBtn:SetPoint("LEFT", presetsHeader, "RIGHT", 8, 0)
+    savePresetBtn:SetScript("OnClick", function()
+        -- Create a simple input dialog
+        local dialog = CreateFrame("Frame", "TradeBarkerSavePresetDialog", UIParent, "BackdropTemplate")
+        dialog:SetSize(300, 120)
+        dialog:SetPoint("CENTER")
+        dialog:SetFrameStrata("FULLSCREEN_DIALOG")
+        dialog:SetBackdrop({
+            bgFile = "Interface\\Buttons\\WHITE8x8",
+            edgeFile = "Interface\\Buttons\\WHITE8x8",
+            edgeSize = 2,
+            insets = { left = 2, right = 2, top = 2, bottom = 2 },
+        })
+        dialog:SetBackdropColor(0.06, 0.06, 0.08, 0.95)
+        dialog:SetBackdropBorderColor(0.6, 0.6, 0.6, 0.9)
+
+        local title = dialog:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+        title:SetPoint("TOP", 0, -10)
+        title:SetText("Save Preset")
+
+        local label = dialog:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        label:SetPoint("TOPLEFT", 10, -35)
+        label:SetText("Preset name:")
+
+        local inputPanel = CreatePanel(dialog, nil)
+        inputPanel:SetPoint("TOPLEFT", 10, -50)
+        inputPanel:SetPoint("RIGHT", -10, 0)
+        inputPanel:SetHeight(25)
+
+        local input = CreateFrame("EditBox", nil, inputPanel)
+        input:SetPoint("TOPLEFT", 4, -4)
+        input:SetPoint("BOTTOMRIGHT", -4, 4)
+        input:SetAutoFocus(true)
+        input:SetFontObject(GameFontHighlightSmall)
+        input:SetScript("OnEscapePressed", function() dialog:Hide() end)
+        input:SetScript("OnEnterPressed", function(self)
+            local name = self:GetText()
+            if SavePreset(name) then
+                RebuildPresetList()
+                dialog:Hide()
+            end
+        end)
+
+        local okBtn = CreateFlatButton(dialog, "Save", 80)
+        okBtn:SetPoint("BOTTOM", 40, 10)
+        okBtn:SetScript("OnClick", function()
+            local name = input:GetText()
+            if SavePreset(name) then
+                RebuildPresetList()
+                dialog:Hide()
+            end
+        end)
+
+        local cancelBtn = CreateFlatButton(dialog, "Cancel", 80)
+        cancelBtn:SetPoint("BOTTOM", -40, 10)
+        cancelBtn:SetScript("OnClick", function()
+            dialog:Hide()
+        end)
+
+        dialog:Show()
+    end)
+
+    local presetsPanel = CreatePanel(f, nil)
+    presetsPanel:SetPoint("TOPLEFT", 8, -214)
+    presetsPanel:SetPoint("RIGHT", -8, 0)
+    presetsPanel:SetHeight(120)
+
+    presetListFrame = CreateFrame("Frame", nil, presetsPanel)
+    presetListFrame:SetPoint("TOPLEFT", 4, -4)
+    presetListFrame:SetPoint("BOTTOMRIGHT", -4, 4)
+    presetListFrame._rows = {}
+
     -- Checklist scroll area
     local listPanel = CreatePanel(f, nil)
-    listPanel:SetPoint("TOPLEFT", 8, -200)
+    listPanel:SetPoint("TOPLEFT", 8, -340)
     listPanel:SetPoint("BOTTOMRIGHT", -8, 38)
 
     scrollFrame = CreateFrame("ScrollFrame", "TradeBarkerScrollFrame", listPanel, "UIPanelScrollFrameTemplate")

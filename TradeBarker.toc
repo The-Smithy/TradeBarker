@@ -2,7 +2,7 @@
 ## Title: TradeBarker
 ## Notes: Advertise your profession services in trade chat with auto-generated messages.
 ## Author: mgm21
-## Version: 1.0.0
+## Version: 1.1.0
 ## SavedVariablesPerCharacter: TradeBarkerDB
 
 TradeBarker.lua
