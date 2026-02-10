@@ -776,7 +776,7 @@ end
 -------------------------------------------------------------------------------
 local function CreateMainFrame()
     local f = CreateFrame("Frame", "TradeBarkerFrame", UIParent, "BackdropTemplate")
-    f:SetSize(360, 580)
+    f:SetSize(360, 600)
     f:SetPoint("CENTER")
     f:SetMovable(true)
     f:EnableMouse(true)
@@ -869,10 +869,29 @@ local function CreateMainFrame()
         UpdateCharCount()
     end)
 
+    -- Preview section (below template)
+    local previewLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    previewLabel:SetPoint("TOPLEFT", 10, -130)
+    previewLabel:SetText("|cff8899aaPreview|r")
+
+    local previewPanel = CreatePanel(f, nil)
+    previewPanel:SetPoint("TOPLEFT", 8, -144)
+    previewPanel:SetPoint("RIGHT", -8, 0)
+    previewPanel:SetHeight(50)
+
+    previewBox = CreateFrame("EditBox", nil, previewPanel)
+    previewBox:SetPoint("TOPLEFT", 6, -6)
+    previewBox:SetPoint("BOTTOMRIGHT", -6, 6)
+    previewBox:SetAutoFocus(false)
+    previewBox:SetFontObject(GameFontHighlightSmall)
+    previewBox:SetMultiLine(true)
+    previewBox:EnableMouse(true)
+    previewBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
+
     -- Checklist scroll area
     local listPanel = CreatePanel(f, nil)
-    listPanel:SetPoint("TOPLEFT", 8, -132)
-    listPanel:SetPoint("BOTTOMRIGHT", -8, 100)
+    listPanel:SetPoint("TOPLEFT", 8, -200)
+    listPanel:SetPoint("BOTTOMRIGHT", -8, 38)
 
     scrollFrame = CreateFrame("ScrollFrame", "TradeBarkerScrollFrame", listPanel, "UIPanelScrollFrameTemplate")
     scrollFrame:SetPoint("TOPLEFT", 2, -2)
@@ -882,9 +901,9 @@ local function CreateMainFrame()
     scrollChild:SetSize(scrollFrame:GetWidth() or 280, 1)
     scrollFrame:SetScrollChild(scrollChild)
 
-    -- Bottom controls
-    local selectAllBtn = CreateFlatButton(f, "Select All", 80)
-    selectAllBtn:SetPoint("BOTTOMLEFT", 8, 72)
+    -- Bottom button row
+    local selectAllBtn = CreateFlatButton(f, "Select All", 72)
+    selectAllBtn:SetPoint("BOTTOMLEFT", 8, 8)
     selectAllBtn:SetScript("OnClick", function()
         for _, entry in ipairs(checkboxes) do
             entry.cb:SetChecked(true)
@@ -892,7 +911,7 @@ local function CreateMainFrame()
         end
     end)
 
-    local deselectAllBtn = CreateFlatButton(f, "Deselect All", 80)
+    local deselectAllBtn = CreateFlatButton(f, "Deselect All", 72)
     deselectAllBtn:SetPoint("LEFT", selectAllBtn, "RIGHT", 4, 0)
     deselectAllBtn:SetScript("OnClick", function()
         for _, entry in ipairs(checkboxes) do
@@ -901,23 +920,8 @@ local function CreateMainFrame()
         end
     end)
 
-    -- Preview box
-    local previewPanel = CreatePanel(f, nil)
-    previewPanel:SetPoint("BOTTOMLEFT", 8, 38)
-    previewPanel:SetPoint("BOTTOMRIGHT", -8, 38)
-    previewPanel:SetHeight(28)
-
-    previewBox = CreateFrame("EditBox", nil, previewPanel)
-    previewBox:SetPoint("TOPLEFT", 6, -4)
-    previewBox:SetPoint("BOTTOMRIGHT", -6, 4)
-    previewBox:SetAutoFocus(false)
-    previewBox:SetFontObject(GameFontHighlightSmall)
-    previewBox:EnableMouse(true)
-    previewBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
-
-    -- Action buttons
-    local previewBtn = CreateFlatButton(f, "Preview", 80)
-    previewBtn:SetPoint("BOTTOMLEFT", 8, 8)
+    local previewBtn = CreateFlatButton(f, "Preview", 72)
+    previewBtn:SetPoint("LEFT", deselectAllBtn, "RIGHT", 4, 0)
     previewBtn:SetScript("OnClick", function()
         local msg = BuildMessage()
         if msg then
@@ -933,7 +937,7 @@ local function CreateMainFrame()
         end
     end)
 
-    local sendBtn = CreateFlatButton(f, "Send to Trade", 100)
+    local sendBtn = CreateFlatButton(f, "Send", 72)
     sendBtn:SetPoint("LEFT", previewBtn, "RIGHT", 4, 0)
     sendBtn:SetBackdropColor(0.1, 0.18, 0.1, 0.9)
     sendBtn:SetBackdropBorderColor(0.3, 0.6, 0.3, 0.8)
