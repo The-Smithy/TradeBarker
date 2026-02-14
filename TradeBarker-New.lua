@@ -15,6 +15,7 @@ local TB = TradeBarker
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("ADDON_LOADED")
 eventFrame:RegisterEvent("SKILL_LINES_CHANGED")
+eventFrame:RegisterEvent("PLAYER_LOGIN")
 
 eventFrame:SetScript("OnEvent", function(self, event, arg1)
     if event == "ADDON_LOADED" and arg1 == "TradeBarker" then
@@ -26,6 +27,10 @@ eventFrame:SetScript("OnEvent", function(self, event, arg1)
         TB.RebuildTabs()
         print("|cff00ccff[TradeBarker]|r Loaded! Type /tb to open.")
         self:UnregisterEvent("ADDON_LOADED")
+    elseif event == "PLAYER_LOGIN" then
+        -- Sync all preset macros (macro API available after login)
+        TB.SyncAllMacros()
+        self:UnregisterEvent("PLAYER_LOGIN")
     elseif event == "SKILL_LINES_CHANGED" then
         if TB.mainFrame then
             TB.RebuildTabs()

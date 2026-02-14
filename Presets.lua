@@ -51,6 +51,7 @@ function TB.SavePreset(name)
     })
 
     print("|cff00ff00[TradeBarker]|r Preset '" .. name .. "' saved!")
+    TB.UpdatePresetMacro(TB.selectedProfession, name)
     return true
 end
 
@@ -137,6 +138,7 @@ function TB.DeletePreset(presetIndex)
     local preset = presets[presetIndex]
     if not preset then return end
 
+    TB.DeletePresetMacro(TB.selectedProfession, preset.name)
     print("|cffff6600[TradeBarker]|r Deleted preset: " .. preset.name)
     table.remove(presets, presetIndex)
 end
@@ -147,7 +149,10 @@ function TB.RenamePreset(presetIndex, newName)
     local preset = presets[presetIndex]
     if not preset then return end
 
+    local oldName = preset.name
+    TB.DeletePresetMacro(TB.selectedProfession, oldName)
     preset.name = newName
+    TB.UpdatePresetMacro(TB.selectedProfession, newName)
     print("|cff00ff00[TradeBarker]|r Preset renamed to: " .. newName)
 end
 

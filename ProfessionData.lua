@@ -342,6 +342,7 @@ TB.PROFESSION_DATA = {
                 { name = "Windhawk Belt", spellID = 36079 },
                 { name = "Living Crystal Breastplate", spellID = 32482 },
                 { name = "Golden Dragonstrike Breastplate", spellID = 35582 },
+                { name = "Gloves of the Living Touch", spellID = 35562 },
             },
         },
         {

@@ -10,5 +10,6 @@ Core.lua
 ProfessionData.lua
 Presets.lua
 MessageBuilder.lua
+Macros.lua
 UI.lua
 TradeBarker-New.lua

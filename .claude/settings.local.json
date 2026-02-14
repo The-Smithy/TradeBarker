@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "WebFetch(domain:www.wowhead.com)",
+      "WebFetch(domain:blizzardwatch.com)",
+      "WebFetch(domain:www.warcrafttavern.com)",
+      "WebFetch(domain:www.wow-professions.com)"
+    ]
+  }
+}
