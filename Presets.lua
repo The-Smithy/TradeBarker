@@ -39,10 +39,6 @@ function TB.SavePreset(name)
     end
 
     local selections = TB.GetCurrentSelections()
-    if not next(selections) then
-        print("|cffff6600[TradeBarker]|r No items selected to save!")
-        return
-    end
 
     local presets = TB.GetPresets()
     table.insert(presets, {
@@ -76,13 +72,16 @@ function TB.LoadPreset(presetIndex)
         TradeBarkerDB[key] = value
     end
 
-    -- Update UI
+    -- Update UI checkboxes
     for _, entry in ipairs(TB.checkboxes) do
-        entry.cb:SetChecked(TradeBarkerDB[entry.key] or false)
+        entry.cb:SetChecked(TradeBarkerDB[entry.key] and true or false)
     end
 
+    -- Show the loaded preset's message in the preview
     if TB.previewBox then
-        TB.previewBox:SetText("")
+        TB.previewBox:ClearFocus()
+        local msg = TB.BuildMessage()
+        TB.previewBox:SetText(msg or "")
     end
     TB.UpdateCharCount()
 
@@ -131,6 +130,16 @@ function TB.QuickSendPreset(presetIndex)
     for _, entry in ipairs(TB.checkboxes) do
         entry.cb:SetChecked(TradeBarkerDB[entry.key] or false)
     end
+end
+
+function TB.UpdatePreset(presetIndex)
+    local presets = TB.GetPresets()
+    local preset = presets[presetIndex]
+    if not preset then return end
+
+    preset.items = TB.GetCurrentSelections()
+    TB.UpdatePresetMacro(TB.selectedProfession, preset.name)
+    print("|cff00ff00[TradeBarker]|r Preset '" .. preset.name .. "' updated!")
 end
 
 function TB.DeletePreset(presetIndex)

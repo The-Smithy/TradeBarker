@@ -6,6 +6,19 @@ TradeBarker = TradeBarker or {}
 local TB = TradeBarker
 
 -------------------------------------------------------------------------------
+-- Helpers
+-------------------------------------------------------------------------------
+local function EscapeForChat(msg)
+    -- Escape bare | that are NOT part of a recognized WoW escape sequence,
+    -- while leaving spell/item hyperlinks and color codes intact so they
+    -- remain clickable in trade chat.
+    -- WoW renders "||" as a literal "|" in chat.
+    -- Valid escape starters after |: c r H h T t A a K k n |
+    msg = msg:gsub("|([^crHhTtAaKkn|])", "||%1")
+    return msg
+end
+
+-------------------------------------------------------------------------------
 -- Message Building
 -------------------------------------------------------------------------------
 function TB.BuildItemsString()
@@ -34,7 +47,7 @@ function TB.BuildItemsString()
             end
         end
         if #selected > 0 then
-            table.insert(parts, group.slot .. ": " .. table.concat(selected, ", "))
+            table.insert(parts, table.concat(selected, ", "))
         end
     end
 
@@ -46,11 +59,17 @@ function TB.BuildItemsString()
 end
 
 function TB.BuildMessage()
-    local itemsStr = TB.BuildItemsString()
-    if not itemsStr then return nil end
-
+    if not TB.selectedProfession then
+        TB.Debug("BuildMessage: selectedProfession is nil")
+        return nil
+    end
     local template = TB.GetTemplate()
-    return TB.RenderTemplate(template, TB.selectedProfession, itemsStr)
+    local itemsStr = TB.BuildItemsString() or ""
+    TB.Debug("BuildMessage: template=" .. template)
+    TB.Debug("BuildMessage: items=" .. itemsStr)
+    local msg = TB.RenderTemplate(template, TB.selectedProfession, itemsStr)
+    -- Return nil only if the rendered message is empty
+    return msg ~= "" and msg or nil
 end
 
 function TB.UpdateCharCount()
@@ -137,26 +156,20 @@ end
 function TB.SendToTrade()
     local msg = TB.BuildMessage()
     if not msg then
-        print("|cffff6600[TradeBarker]|r No items selected!")
+        print("|cffff6600[TradeBarker]|r No message to send! (profession=" .. tostring(TB.selectedProfession) .. ")")
         return
     end
 
-    local channelNum = GetChannelName("Trade")
-    if not channelNum or channelNum == 0 then
-        channelNum = GetChannelName("Trade - City")
-        if not channelNum or channelNum == 0 then
-            print("|cffff6600[TradeBarker]|r You must be in a city with Trade channel to send!")
-            return
-        end
-    end
-
     local messages = TB.SplitMessage(msg, TB.MAX_CHAT_LENGTH)
-    for _, m in ipairs(messages) do
-        if #m > TB.MAX_CHAT_LENGTH then
-            print("|cffff6600[TradeBarker]|r Message part too long (" .. #m .. "/" .. TB.MAX_CHAT_LENGTH .. " chars). Deselect some items!")
+    TB.Debug("SendToTrade: " .. #messages .. " part(s)")
+    for i, m in ipairs(messages) do
+        local stripped = EscapeForChat(m)
+        TB.Debug("SendToTrade[" .. i .. "] len=" .. #stripped .. ": " .. stripped)
+        if #stripped > TB.MAX_CHAT_LENGTH then
+            print("|cffff6600[TradeBarker]|r Message part too long (" .. #stripped .. "/" .. TB.MAX_CHAT_LENGTH .. " chars). Deselect some items!")
             return
         end
-        SendChatMessage(m, "CHANNEL", nil, channelNum)
+        SendChatMessage(stripped, "CHANNEL", nil, 2)
     end
     print("|cff00ff00[TradeBarker]|r Message sent to Trade! (" .. #messages .. " message(s))")
 end

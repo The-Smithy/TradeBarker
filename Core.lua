@@ -12,6 +12,39 @@ TB.DEFAULT_TEMPLATE = "LFW {profession}! | {items} | PST!"
 TB.MAX_CHAT_LENGTH = 255
 
 -------------------------------------------------------------------------------
+-- Debug
+-------------------------------------------------------------------------------
+TB.debugMode = false
+
+local _origErrorHandler = nil
+
+local function TB_ErrorHandler(err)
+    print("|cffff4444[TB:ERR]|r " .. tostring(err))
+    if _origErrorHandler then
+        _origErrorHandler(err)
+    end
+end
+
+function TB.SetDebugMode(enabled)
+    TB.debugMode = enabled
+    if enabled then
+        _origErrorHandler = geterrorhandler()
+        seterrorhandler(TB_ErrorHandler)
+    else
+        if _origErrorHandler then
+            seterrorhandler(_origErrorHandler)
+        end
+        _origErrorHandler = nil
+    end
+end
+
+function TB.Debug(msg)
+    if TB.debugMode then
+        print("|cff888888[TB:DBG]|r " .. tostring(msg))
+    end
+end
+
+-------------------------------------------------------------------------------
 -- State Variables
 -------------------------------------------------------------------------------
 TB.selectedProfession = nil
@@ -84,8 +117,10 @@ function TB.SetTemplate(text)
 end
 
 function TB.RenderTemplate(template, profName, itemsStr)
-    local result = template:gsub("{profession}", profName)
-    result = result:gsub("{items}", itemsStr)
+    TB.Debug("RenderTemplate: prof=" .. tostring(profName) .. " itemsLen=" .. tostring(itemsStr and #itemsStr or 0))
+    local result = template:gsub("{profession}", profName or "")
+    result = result:gsub("{items}", itemsStr or "")
+    TB.Debug("RenderTemplate: result=" .. result)
     return result
 end
 
